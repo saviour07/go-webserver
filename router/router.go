@@ -9,8 +9,7 @@ import (
 
 var routerHandlers = []handlers.Handler{
 	handlers.HomeHandler{},
-	handlers.DetailsHandler{},
-	handlers.VariableHandler{},
+	handlers.AboutHandler{},
 }
 
 // MuxRouter creates a new mux router and registers the handler functions

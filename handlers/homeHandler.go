@@ -1,6 +1,7 @@
 package handlers
 
 import (
+	"fmt"
 	"html/template"
 	"net/http"
 
@@ -18,9 +19,12 @@ func (HomeHandler) RegisterHandler(router *mux.Router) {
 }
 
 func homeHandler(writer http.ResponseWriter, request *http.Request) {
-	html := template.Must(template.ParseFiles("./html/home.html"))
+	html := template.Must(template.ParseFiles("./html/home.html", "./html/base/header.html", "./html/base/navbar.html", "./html/base/footer.html"))
 	homePage := models.Home{
-		PageTitle: "You're home!",
+		Message: "Hello, World!",
 	}
-	html.Execute(writer, homePage)
+	err := html.Execute(writer, homePage)
+	if err != nil {
+		fmt.Printf(err.Error())
+	}
 }
