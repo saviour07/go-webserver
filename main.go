@@ -7,7 +7,7 @@ import (
 	"time"
 
 	"github.com/joho/godotenv"
-	"github.com/saviour07/webserver/router"
+	"github.com/saviour07/go-webserver/router"
 )
 
 func main() {

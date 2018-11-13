@@ -4,7 +4,7 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"github.com/saviour07/webserver/handlers"
+	"github.com/saviour07/go-webserver/handlers"
 )
 
 var routerHandlers = []handlers.Handler{

@@ -6,7 +6,7 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
-	"github.com/saviour07/webserver/models"
+	"github.com/saviour07/go-webserver/models"
 )
 
 // HomeHandler structure
