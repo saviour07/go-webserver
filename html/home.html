@@ -4,14 +4,14 @@
 
   <body>
 
-    {{ template "navbar" }}
+    {{ template "navbar" .NavigationBar }}
 
     <div class="container">
 
       <div class="starter-template">
         <h1>Home</h1>
         <p class="lead">This is our <strong>HOME</strong> page</p>
-        <p>{{.Message}}</p>
+        <p>{{.Data.Message}}</p>
       </div>
 
     </div>
