@@ -7,6 +7,5 @@ import (
 
 // Handler interface
 type Handler interface {
-	AddNavBar(navItems []models.NavItem)
-	RegisterHandler(path string, router *mux.Router)
+	RegisterHandler(path string, navItems []models.NavItem, router *mux.Router)
 }

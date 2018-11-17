@@ -11,27 +11,22 @@ import (
 
 // AboutHandler structure
 type AboutHandler struct {
-	navItems []models.NavItem
-}
-
-// AddNavBar implements handlers.AddNavBar()
-func (a *AboutHandler) AddNavBar(navItems []models.NavItem) {
-	a.navItems = navItems
 }
 
 // RegisterHandler implements handlers.RegisterHandler()
-func (a AboutHandler) RegisterHandler(path string, router *mux.Router) {
+func (AboutHandler) RegisterHandler(path string, navItems []models.NavItem, router *mux.Router) {
 	router.HandleFunc(path, func(writer http.ResponseWriter, request *http.Request) {
 
-		for idx := range a.navItems {
-			a.navItems[idx].Selected = false
-			if a.navItems[idx].Path == path {
-				a.navItems[idx].Selected = true
+		var idx int
+		for idx = range navItems {
+			navItems[idx].Selected = false
+			if navItems[idx].Path == path {
+				navItems[idx].Selected = true
 			}
 		}
 
 		pageData := models.Page{
-			NavigationBar: a.navItems,
+			NavigationBar: navItems,
 			Data: models.About{
 				AboutDetail: "About Details",
 			},

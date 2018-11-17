@@ -11,27 +11,22 @@ import (
 
 // HomeHandler structure
 type HomeHandler struct {
-	navItems []models.NavItem
-}
-
-// AddNavBar implements handlers.AddNavBar()
-func (h *HomeHandler) AddNavBar(navItems []models.NavItem) {
-	h.navItems = navItems
 }
 
 // RegisterHandler implements handlers.RegisterHandler()
-func (h HomeHandler) RegisterHandler(path string, router *mux.Router) {
+func (HomeHandler) RegisterHandler(path string, navItems []models.NavItem, router *mux.Router) {
 	router.HandleFunc(path, func(writer http.ResponseWriter, request *http.Request) {
 
-		for idx := range h.navItems {
-			h.navItems[idx].Selected = false
-			if h.navItems[idx].Path == path {
-				h.navItems[idx].Selected = true
+		var idx int
+		for idx = range navItems {
+			navItems[idx].Selected = false
+			if navItems[idx].Path == path {
+				navItems[idx].Selected = true
 			}
 		}
 
 		pageData := models.Page{
-			NavigationBar: h.navItems,
+			NavigationBar: navItems,
 			Data: models.Home{
 				Message: "Hello, World!",
 			},

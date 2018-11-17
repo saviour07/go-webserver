@@ -24,13 +24,13 @@ func (HomeController) Title() string {
 // NavItem implements controller.NavItem()
 func (h HomeController) NavItem() models.NavItem {
 	return models.NavItem{
-		Path:  h.Path(),
-		Title: h.Title(),
+		Path:     h.Path(),
+		Title:    h.Title(),
+		Selected: true,
 	}
 }
 
 // RegisterHandler implements handlers.RegisterHandler()
 func (h HomeController) RegisterHandler(navBar []models.NavItem, router *mux.Router) {
-	h.handler.AddNavBar(navBar)
-	h.handler.RegisterHandler(h.Path(), router)
+	h.handler.RegisterHandler(h.Path(), navBar, router)
 }
