@@ -19,9 +19,16 @@ func (a *AboutHandler) AddNavBar(navItems []models.NavItem) {
 	a.navItems = navItems
 }
 
-// RegisterHandler implements handlers.RegisterHandler
+// RegisterHandler implements handlers.RegisterHandler()
 func (a AboutHandler) RegisterHandler(path string, router *mux.Router) {
 	router.HandleFunc(path, func(writer http.ResponseWriter, request *http.Request) {
+
+		for idx := range a.navItems {
+			a.navItems[idx].Selected = false
+			if a.navItems[idx].Path == path {
+				a.navItems[idx].Selected = true
+			}
+		}
 
 		pageData := models.Page{
 			NavigationBar: a.navItems,

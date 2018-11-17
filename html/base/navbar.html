@@ -13,7 +13,11 @@
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         {{range . }}
+        {{if .Selected}}
+        <li class="active">
+        {{else}}
         <li>
+        {{end}}
           <a href="{{.Path}}">{{.Title}}</a>
         </li>
         {{end}}
