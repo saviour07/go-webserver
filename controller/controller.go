@@ -10,5 +10,5 @@ type Controller interface {
 	Path() string
 	Title() string
 	NavItem() models.NavItem
-	RegisterHandler(navBar []models.NavItem, router *mux.Router)
+	RegisterHandler(navBar models.NavigationItems, router *mux.Router)
 }

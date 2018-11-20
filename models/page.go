@@ -2,6 +2,6 @@ package models
 
 // Page structure
 type Page struct {
-	NavigationBar []NavItem
+	NavigationBar NavigationItems
 	Data          interface{}
 }

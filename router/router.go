@@ -9,8 +9,8 @@ import (
 )
 
 var controllers = []controller.Controller{
-	controller.HomeController{},
-	controller.AboutController{},
+	&controller.HomeController{},
+	&controller.AboutController{},
 }
 
 // MuxRouter creates a new mux router and registers the handler functions
@@ -22,15 +22,15 @@ func MuxRouter() http.Handler {
 
 func registerHandlers(muxRouter *mux.Router) {
 	navBar := buildNavBar()
-	for _, c := range controllers {
-		c.RegisterHandler(navBar, muxRouter)
+	for idx := range controllers {
+		controllers[idx].RegisterHandler(navBar, muxRouter)
 	}
 }
 
-func buildNavBar() []models.NavItem {
-	var navBar []models.NavItem
-	for _, c := range controllers {
-		navBar = append(navBar, c.NavItem())
+func buildNavBar() models.NavigationItems {
+	var navBar models.NavigationItems
+	for idx := range controllers {
+		navBar.NavItems = append(navBar.NavItems, controllers[idx].NavItem())
 	}
 	return navBar
 }

@@ -7,5 +7,5 @@ import (
 
 // Handler interface
 type Handler interface {
-	RegisterHandler(path string, navItems []models.NavItem, router *mux.Router)
+	Register(path string, navItems []models.NavItem, router *mux.Router)
 }

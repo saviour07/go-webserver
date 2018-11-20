@@ -8,7 +8,7 @@ import (
 
 // AboutController structure
 type AboutController struct {
-	handler handlers.AboutHandler
+	handlers.AboutHandler
 }
 
 // Path implements controller.Path()
@@ -22,7 +22,7 @@ func (AboutController) Title() string {
 }
 
 // NavItem implements controller.NavItem()
-func (a AboutController) NavItem() models.NavItem {
+func (a *AboutController) NavItem() models.NavItem {
 	return models.NavItem{
 		Path:     a.Path(),
 		Title:    a.Title(),
@@ -30,7 +30,7 @@ func (a AboutController) NavItem() models.NavItem {
 	}
 }
 
-// RegisterHandler implements handlers.RegisterHandler()
-func (a AboutController) RegisterHandler(navBar []models.NavItem, router *mux.Router) {
-	a.handler.RegisterHandler(a.Path(), navBar, router)
+// RegisterHandler implements controller.RegisterHandler()
+func (a *AboutController) RegisterHandler(navBar models.NavigationItems, router *mux.Router) {
+	a.Register(a.Path(), navBar, router)
 }

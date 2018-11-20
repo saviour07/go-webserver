@@ -30,9 +30,5 @@ func run() error {
 		MaxHeaderBytes: 1 << 20,
 	}
 
-	if err := s.ListenAndServe(); err != nil {
-		return err
-	}
-
-	return nil
+	return s.ListenAndServe()
 }
