@@ -1,6 +1,4 @@
 # go-webserver
-A webserver written in go
-
 A simple webserver written in go.
 
 <h2>Build</h2>
