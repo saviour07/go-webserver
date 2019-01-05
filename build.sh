@@ -1,1 +1,1 @@
-go build -i -v -o ./bin/webserver
+go get && go build -i -v -o ./bin/webserver

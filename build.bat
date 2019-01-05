@@ -1,1 +1,1 @@
-go build -i -v -o .\bin\webserver.exe
+go get && go build -i -v -o .\bin\webserver.exe
