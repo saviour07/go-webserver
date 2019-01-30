@@ -11,6 +11,7 @@ import (
 var controllers = []controller.Controller{
 	&controller.HomeController{},
 	&controller.AboutController{},
+	&controller.AccordionController{},
 }
 
 // MuxRouter creates a new mux router and registers the handler functions
